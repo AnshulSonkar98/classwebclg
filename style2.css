@@ -1,0 +1,26 @@
+.circle {
+    height: 100px;
+    width: 100px;
+    margin: 0% auto;
+    border-radius: 50%;
+    background: linear-gradient(red pink);
+    animation: anime;
+    animation-duration: 900ms;
+    animation-iteration-count: infi;
+ }
+    @keyframes anime {
+      0%{
+    transform: translateY(0);
+      }
+      100%{
+        transform: translateY(70vh) rotate(360deg);
+      }
+    }
+
+    #background {
+        height: 90vh;
+        width: 190px;
+        border: 15px solid pink;
+        border-radius: 15%;
+        margin: 0 auto;
+        }
