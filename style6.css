@@ -1,48 +1,91 @@
-/* Reset */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: Arial, sans-serif;
+    font-family: 'Segoe UI', sans-serif;
 }
 
-/* Full screen animated background */
+/* Animated background */
 .background {
     height: 100vh;
-    width: 100%;
-    background: linear-gradient(120deg, #0f172a, #020617);
+    background: linear-gradient(120deg, #020617, #0f172a, #020617);
+    background-size: 300% 300%;
+    animation: bgMove 10s infinite alternate;
     display: flex;
     justify-content: center;
     align-items: center;
+    position: relative;
     overflow: hidden;
 }
 
-/* Circle */
-.circle {
-    width: 160px;
-    height: 160px;
-    border-radius: 50%;
-    background: radial-gradient(circle, #3b82f6, #1e3a8a);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: white;
-    font-size: 22px;
-    font-weight: bold;
-
-    box-shadow: 0 0 30px rgba(59,130,246,0.8);
-    animation: float 4s ease-in-out infinite;
+@keyframes bgMove {
+    0% { background-position: 0% 50%; }
+    100% { background-position: 100% 50%; }
 }
 
-/* Floating animation */
+/* Floating orbs */
+.orb {
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    background: #3b82f6;
+    border-radius: 50%;
+    filter: blur(120px);
+    opacity: 0.6;
+    animation: float 8s infinite alternate;
+}
+
+.orb.small {
+    width: 200px;
+    height: 200px;
+    background: #22d3ee;
+    animation-delay: 2s;
+}
+
 @keyframes float {
-    0% {
-        transform: translateY(0);
-    }
-    50% {
-        transform: translateY(-25px);
-    }
+    from { transform: translateY(0); }
+    to { transform: translateY(-120px); }
+}
+
+/* Glass card */
+.glass-card {
+    width: 300px;
+    height: 220px;
+    background: rgba(255,255,255,0.08);
+    backdrop-filter: blur(15px);
+    border-radius: 20px;
+    border: 1px solid rgba(255,255,255,0.2);
+    color: white;
+    text-align: center;
+    padding-top: 60px;
+    position: relative;
+    z-index: 2;
+}
+
+/* Rotating neon ring */
+.ring {
+    position: absolute;
+    top: -15px;
+    left: -15px;
+    right: -15px;
+    bottom: -15px;
+    border-radius: 50%;
+    border: 3px solid transparent;
+    border-top: 3px solid #3b82f6;
+    animation: spin 4s linear infinite;
+}
+
+@keyframes spin {
     100% {
-        transform: translateY(0);
+        transform: rotate(360deg);
     }
+}
+
+.glass-card h1 {
+    font-size: 32px;
+    margin-bottom: 10px;
+}
+
+.glass-card p {
+    color: #cbd5f5;
 }
