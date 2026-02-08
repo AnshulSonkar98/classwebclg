@@ -173,7 +173,7 @@ body {
   animation: pulse 2.5s infinite ease-in-out;
 }
 
-/* ANIMATIONS */
+/* ANIMATIONS *
 @keyframes rotate {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
@@ -182,4 +182,50 @@ body {
 @keyframes pulse {
   0%,100% { transform: scale(1); }
   50% { transform: scale(1.2); }
+}*/
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: radial-gradient(circle, #020617, #000);
+  height: 100vh;
+  overflow: hidden;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.matrix {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+}
+
+canvas {
+  width: 100%;
+  height: 100%;
+}
+
+.overlay-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  color: #8be9fd;
+  pointer-events: none;
+}
+
+.overlay-text h1 {
+  font-size: 3rem;
+  letter-spacing: 2px;
+  text-shadow: 0 0 20px #00f7ff;
+}
+
+.overlay-text p {
+  margin-top: 10px;
+  opacity: 0.7;
+  font-size: 1.1rem;
 }
