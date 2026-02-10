@@ -31,80 +31,88 @@
 // });
 
 
+// ceative core advance topic
 
+// const canvas = document.getElementById("neural");
+// const ctx = canvas.getContext("2d");
 
-const canvas = document.getElementById("neural");
-const ctx = canvas.getContext("2d");
+// canvas.width = innerWidth;
+// canvas.height = innerHeight;
 
-canvas.width = innerWidth;
-canvas.height = innerHeight;
+// const nodes = [];
+// const NODE_COUNT = 120;
 
-const nodes = [];
-const NODE_COUNT = 120;
+// class Node {
+//   constructor() {
+//     this.x = Math.random() * canvas.width;
+//     this.y = Math.random() * canvas.height;
+//     this.vx = (Math.random() - 0.5) * 0.6;
+//     this.vy = (Math.random() - 0.5) * 0.6;
+//     this.radius = 2;
+//   }
 
-class Node {
-  constructor() {
-    this.x = Math.random() * canvas.width;
-    this.y = Math.random() * canvas.height;
-    this.vx = (Math.random() - 0.5) * 0.6;
-    this.vy = (Math.random() - 0.5) * 0.6;
-    this.radius = 2;
-  }
+//   move() {
+//     this.x += this.vx;
+//     this.y += this.vy;
 
-  move() {
-    this.x += this.vx;
-    this.y += this.vy;
+//     if (this.x < 0 || this.x > canvas.width) this.vx *= -1;
+//     if (this.y < 0 || this.y > canvas.height) this.vy *= -1;
+//   }
 
-    if (this.x < 0 || this.x > canvas.width) this.vx *= -1;
-    if (this.y < 0 || this.y > canvas.height) this.vy *= -1;
-  }
+//   draw() {
+//     ctx.beginPath();
+//     ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+//     ctx.fillStyle = "#00f7ff";
+//     ctx.fill();
+//   }
+// }
 
-  draw() {
-    ctx.beginPath();
-    ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-    ctx.fillStyle = "#00f7ff";
-    ctx.fill();
-  }
-}
+// for (let i = 0; i < NODE_COUNT; i++) {
+//   nodes.push(new Node());
+// }
 
-for (let i = 0; i < NODE_COUNT; i++) {
-  nodes.push(new Node());
-}
+// function connect() {
+//   for (let i = 0; i < nodes.length; i++) {
+//     for (let j = i; j < nodes.length; j++) {
+//       const dx = nodes[i].x - nodes[j].x;
+//       const dy = nodes[i].y - nodes[j].y;
+//       const dist = Math.sqrt(dx * dx + dy * dy);
 
-function connect() {
-  for (let i = 0; i < nodes.length; i++) {
-    for (let j = i; j < nodes.length; j++) {
-      const dx = nodes[i].x - nodes[j].x;
-      const dy = nodes[i].y - nodes[j].y;
-      const dist = Math.sqrt(dx * dx + dy * dy);
+//       if (dist < 120) {
+//         ctx.strokeStyle = `rgba(0,247,255,${1 - dist / 120})`;
+//         ctx.lineWidth = 0.5;
+//         ctx.beginPath();
+//         ctx.moveTo(nodes[i].x, nodes[i].y);
+//         ctx.lineTo(nodes[j].x, nodes[j].y);
+//         ctx.stroke();
+//       }
+//     }
+//   }
+// }
 
-      if (dist < 120) {
-        ctx.strokeStyle = `rgba(0,247,255,${1 - dist / 120})`;
-        ctx.lineWidth = 0.5;
-        ctx.beginPath();
-        ctx.moveTo(nodes[i].x, nodes[i].y);
-        ctx.lineTo(nodes[j].x, nodes[j].y);
-        ctx.stroke();
-      }
-    }
-  }
-}
+// function animate() {
+//   ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-function animate() {
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
+//   nodes.forEach(n => {
+//     n.move();
+//     n.draw();
+//   });
 
-  nodes.forEach(n => {
-    n.move();
-    n.draw();
-  });
+//   connect();
+//   requestAnimationFrame(animate);
+// }
 
-  connect();
-  requestAnimationFrame(animate);
-}
+// animate();
 
-animate();
+// window.addEventListener("resize", () => {
+//   canvas.width = innerWidth;
+//   canvas.height = innerHeight;
+// });
+const scene = document.querySelector('.scene');
 
-window.addEventListener("resize", () => {
-  canvas.width = innerWidth;
-  canvas.height = innerHeight;
+document.addEventListener('mousemove', (e) => {
+  const x = (e.clientX / window.innerWidth - 0.5) * 20;
+  const y = (e.clientY / window.innerHeight - 0.5) * 20;
+
+  scene.style.transform = `rotateX(${ -y }deg) rotateY(${ x }deg)`;
 });
