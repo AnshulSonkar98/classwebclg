@@ -1,0 +1,97 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  height: 100vh;
+  background: radial-gradient(circle at top, #020617, #000);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  font-family: system-ui;
+}
+
+/* Main Scene */
+.scene {
+  position: relative;
+  width: 300px;
+  height: 300px;
+}
+
+/* Core */
+.core {
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: radial-gradient(circle, #38bdf8, #0284c7);
+  box-shadow: 0 0 40px #38bdf8;
+  animation: pulse 2.5s ease-in-out infinite;
+}
+
+/* Rings */
+.ring {
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  border-radius: 50%;
+  border: 1px solid rgba(56,189,248,0.4);
+  box-shadow: 0 0 15px rgba(56,189,248,0.4);
+}
+
+.ring1 {
+  width: 160px;
+  height: 160px;
+  animation: spin 10s linear infinite;
+}
+
+.ring2 {
+  width: 220px;
+  height: 220px;
+  animation: spinReverse 14s linear infinite;
+}
+
+.ring3 {
+  width: 280px;
+  height: 280px;
+  animation: spin 20s linear infinite;
+}
+
+/* Label */
+.label {
+  position: absolute;
+  bottom: -60px;
+  width: 100%;
+  text-align: center;
+  color: #7dd3fc;
+  letter-spacing: 2px;
+  font-size: 14px;
+  opacity: 0.8;
+}
+
+/* Animations */
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes spinReverse {
+  from { transform: rotate(360deg); }
+  to { transform: rotate(0deg); }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+    box-shadow: 0 0 35px #38bdf8;
+  }
+  50% {
+    transform: scale(1.15);
+    box-shadow: 0 0 70px #38bdf8;
+  }
+}
